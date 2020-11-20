@@ -97,7 +97,7 @@ benchmark_t::benchmark_t(tree_api* tree, const options_t& opt) noexcept
         }
     }
 
-    size_t key_space_sz = opt_.num_records + (opt_.num_ops * opt_.insert_ratio);
+    size_t key_space_sz = opt_.num_records + opt_.num_ops;
     switch (opt_.key_distribution)
     {
     case distribution_t::UNIFORM:
@@ -176,7 +176,7 @@ void benchmark_t::run() noexcept
     bool finished = false;
 
     // The amount of inserts expected to be done by each thread + some play room.
-    uint64_t inserts_per_thread = 10 + (opt_.num_ops * opt_.insert_ratio) / opt_.num_threads;
+    uint64_t inserts_per_thread = 10 + opt_.num_ops / opt_.num_threads;
 
     // Current id after load
     uint64_t current_id = key_generator_->current_id_;
