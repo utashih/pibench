@@ -129,6 +129,11 @@ void benchmark_t::load() noexcept
     if(opt_.skip_load)
     {
         key_generator_->current_id_ = opt_.num_records + 1;
+
+        // FIXME(shiges): Just to make output format consistent
+        std::cout << "Overview:"
+                  << "\n"
+                  << "\tLoad time: 0.0 milliseconds" << std::endl;
         return;
     }
 
